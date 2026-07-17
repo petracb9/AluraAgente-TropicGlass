@@ -1,4 +1,14 @@
-# Alura Agente - TropicGlass
+# 🤖 Alura Agente - TropicGlass
+
+Agente inteligente desarrollado con Python, LangChain, FAISS, Gemini y Streamlit.
+
+## 🚀 Aplicación desplegada en línea
+
+**Probar la aplicación:**
+
+https://aluraagente-tropicglass-5t7yr2qhhka85bxmi2zc7t.streamlit.app/ 
+
+---
 
 ## Descripción del proyecto
 
