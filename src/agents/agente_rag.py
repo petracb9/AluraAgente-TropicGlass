@@ -22,43 +22,44 @@ def iniciar_agente():
     )
 
     llm = crear_llm()
+    
+    def responder(pregunta: str) -> str:
 
+         documentos = retriever.invoke(pregunta)
+         
+         contexto = "\n\n".join(
+             doc.page_content
+             for doc in documentos
+         )
+         prompt = PROMPT_AGENTE.invoke(
+             {
+                 "contexto": contexto,
+                 "pregunta": pregunta
+             }
+         )
+         respuesta = llm.invoke(prompt)
+         texto = ""
+    
+         if isinstance(respuesta.content, list):
+             for bloque in respuesta.content:
+                 if bloque.get("type") == "text":
+                     texto += bloque.get("text", "")
+         else:
+             texto = respuesta.content
+     
+         return texto    
+     
     print("=" * 60)
     print("Alura Agente - TropicGlass")
     print("=" * 60)
-
+   
     while True:
-
+    
         pregunta = input("\nPregunta: ")
-
+        
         if pregunta.lower() == "salir":
             print("\nHasta luego.")
-            break
-
-        documentos = retriever.invoke(pregunta)
-
-        contexto = "\n\n".join(
-            doc.page_content
-            for doc in documentos
-        )
-
-        prompt = PROMPT_AGENTE.invoke(
-            {
-                "contexto": contexto,
-                "pregunta": pregunta
-            }
-        )
-
-        respuesta = llm.invoke(prompt)
-
-        texto = ""
-
-        if isinstance(respuesta.content, list):
-            for bloque in respuesta.content:
-                if bloque.get("type") == "text":
-                    texto += bloque.get("text", "")
-        else:
-            texto = respuesta.content
-
+            break  
+                  
         print("\nRespuesta:\n")
-        print(texto)
+        print(responder(pregunta))
