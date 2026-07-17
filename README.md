@@ -217,6 +217,36 @@ disponibles al momento de la compra.
 
 ---
 
+## Evidencias
+
+### Interfaz
+
+![Interfaz](docs/images/01_interfaz_principal.png)
+
+### Consulta de medios de pago
+
+![Consulta](docs/images/02_consulta_medios_pago.png)
+
+### Consulta de devolución
+
+![Consulta devolución](docs/images/03_consulta_devolucion.png)
+
+### Repositorio
+
+![Repositorio](docs/images/04_repositorio_github.png)
+
+### Estructura del proyecto
+
+![Proyecto](docs/images/05_estructura_proyecto.png)
+
+### Historial de commits
+
+![Historial](docs/images/06_historial_commits_github.png)
+
+
+
+---
+
 # Posibles mejoras
 
 - Interfaz web con Streamlit.
