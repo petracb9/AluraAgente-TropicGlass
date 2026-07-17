@@ -243,7 +243,17 @@ disponibles al momento de la compra.
 
 ![Historial](docs/images/06_historial_commits_github.png)
 
+### APP
 
+![Aplicación](docs/images/07_aplicacion_desplegada.png)
+
+### Consulta desplegada
+
+![Consulta desplegada](docs/images/08_consulta_desplegada.png)
+
+### Salida desplegada
+
+![Salida desplegada](docs/images/09_salida_desplegada.png)
 
 ---
 
