@@ -18,6 +18,15 @@ st.set_page_config(
     layout="centered"
 )
 
+if "pregunta" not in st.session_state:
+    st.session_state.pregunta = ""
+
+if "respuesta" not in st.session_state:
+    st.session_state.respuesta = ""
+
+if "salir" not in st.session_state:
+    st.session_state.salir = False
+
 st.title("🤖 Alura Agente")
 st.subheader("Asistente Inteligente - TropicGlass")
 
@@ -26,21 +35,50 @@ st.write(
 )
 
 pregunta = st.text_input(
-    "Escribe tu pregunta:"
+    "Escribe tu pregunta:",
+    key="pregunta"
 )
 
-if st.button("Consultar"):
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    consultar = st.button("Consultar")
+
+with col2:
+    nueva = st.button("Nueva consulta")
+
+with col3:
+    salir = st.button("Salir")
+
+
+if consultar:
 
     if pregunta.strip():
 
         with st.spinner("Buscando respuesta..."):
+            st.session_state.respuesta = responder(pregunta)
 
-            respuesta = responder(pregunta)
+if nueva:
 
-        st.success("Respuesta")
+    st.session_state.clear()
+    st.rerun()
 
-        st.write(respuesta)
 
-    else:
+if salir:
 
-        st.warning("Ingrese una pregunta.")
+    st.session_state.respuesta = ""
+    st.session_state.salir = True
+
+      
+if st.session_state.respuesta:
+
+        st.success("Respuesta")      
+        st.write(st.session_state.respuesta)
+
+if st.session_state.salir:
+
+        st.info(
+            "Gracias por utilizar Alura Agente.\n\n"
+            "Puede cerrar esta pestaña cuando lo desee."
+        )
